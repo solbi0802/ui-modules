@@ -12,8 +12,6 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
     "strict": true,
-    "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",

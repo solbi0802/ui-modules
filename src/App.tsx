@@ -1,11 +1,16 @@
-// import React from 'react';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import CardTemplate from 'pages/CardTemplate';
+import Home from 'pages/Home';
 import './App.css';
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header" />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/card" element={<CardTemplate />} />
+    </Routes>
   );
-}
+};
 
 export default App;
