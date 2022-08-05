@@ -1,17 +1,20 @@
 import React, { FunctionComponent, Component } from 'react';
 import styled from '@emotion/styled';
 import Rating from './Rating';
+import { CardPropType } from 'types/CardProp.types';
 
-const CardWrapper = styled.div`
+const CardWrapper = styled.div<{ layout: 'vertical' | 'horizontal' }>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${({ layout }) =>
+    layout === 'horizontal' ? 'row' : 'column'};
+  column: row;
   justify-content: center;
   align-items: flex-start;
   border: solid #d0c9c6 1px;
   border-radius: 8px;
 `;
 
-const CardImage = styled.img`
+const CardImage = styled.img<{ layout: 'vertical' | 'horizontal' }>`
   width: 100%;
   object-fit: cover;
 `;
@@ -68,25 +71,31 @@ const Contents = styled.span`
   padding: 8px 8px;
 `;
 
-const Card: FunctionComponent = (): JSX.Element => {
+const Card: FunctionComponent<CardPropType> = (
+  props: CardPropType,
+): JSX.Element => {
+  const {
+    layout = 'vertical',
+    title,
+    label,
+    hilightText,
+    crossoutText,
+    contents,
+    useRating = true,
+  } = props;
   return (
-    <CardWrapper>
-      <CardImage src="/image.png" alt="카드 이미지"></CardImage>
+    <CardWrapper layout={layout}>
+      <CardImage src="/image.png" alt="카드 이미지" layout={layout}></CardImage>
       <TextWrapper>
-        <CardLabel>CardLabel</CardLabel>
-        <CardTitle>CardTitle</CardTitle>
+        <CardLabel>{label}</CardLabel>
+        <CardTitle>{title}</CardTitle>
         <SubTextWrapper>
-          <HilightText>Hilight</HilightText>
-          <CrossOutText>CrossOut</CrossOutText>
+          <HilightText>{hilightText}</HilightText>
+          <CrossOutText>{crossoutText}</CrossOutText>
         </SubTextWrapper>
       </TextWrapper>
-      <Rating />
-      <Contents>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-        consequatur vero veniam aperiam nulla soluta nisi nam deserunt cumque
-        distinctio. Quisquam animi sapiente laboriosam et debitis ipsam laborum
-        ad fugiat.
-      </Contents>
+      {useRating && <Rating />}
+      {contents && <Contents>{contents}</Contents>}
     </CardWrapper>
   );
 };
