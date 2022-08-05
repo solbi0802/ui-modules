@@ -7,7 +7,8 @@ const CardWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 8px 8px;
+  border: solid #d0c9c6 1px;
+  border-radius: 8px;
 `;
 
 const CardImage = styled.img`
@@ -22,7 +23,7 @@ const TextWrapper = styled.div`
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  border: solid #d0c9c6 1px;
+  border-bottom: solid #d0c9c6 1px;
 `;
 
 const CardLabel = styled.p`
@@ -70,7 +71,7 @@ const Contents = styled.span`
 const Card: FunctionComponent = (): JSX.Element => {
   return (
     <CardWrapper>
-      <CardImage src="/image.png"></CardImage>
+      <CardImage src="/image.png" alt="카드 이미지"></CardImage>
       <TextWrapper>
         <CardLabel>CardLabel</CardLabel>
         <CardTitle>CardTitle</CardTitle>

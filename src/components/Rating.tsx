@@ -1,6 +1,6 @@
-import React, { FunctionComponent, Component } from 'react';
+import React, { FunctionComponent, Component, useState } from 'react';
 import styled from '@emotion/styled';
-import { BsStar, BsStarFill } from 'react-icons/bs';
+import { TiStar } from 'react-icons/ti';
 
 const RatingWrapper = styled.div`
   display: flex;
@@ -10,10 +10,25 @@ const RatingWrapper = styled.div`
 `;
 
 const Rating: FunctionComponent = (): JSX.Element => {
+  const [rating, setRating] = useState(0);
+  const [hovered, setHovered] = useState(0);
+
   return (
     <RatingWrapper>
-      <BsStarFill color="#ffc500"></BsStarFill>
-      <BsStar></BsStar> <BsStar></BsStar> <BsStar></BsStar> <BsStar></BsStar>
+      {[...Array(5)].map((el, i) => {
+        const ratingValue = i + 1;
+        return (
+          <TiStar
+            key={`id_${i}`}
+            size={30}
+            className="star"
+            color={ratingValue <= (hovered || rating) ? '#ffc500' : '#dddada'}
+            onMouseEnter={() => setHovered(ratingValue)}
+            onMouseLeave={() => setHovered(0)}
+            onClick={() => setRating(ratingValue)}
+          />
+        );
+      })}
     </RatingWrapper>
   );
 };
