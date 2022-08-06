@@ -20,7 +20,7 @@ const Rating: FunctionComponent = (): JSX.Element => {
         return (
           <TiStar
             key={`id_${i}`}
-            size={30}
+            size={25}
             className="star"
             color={ratingValue <= (hovered || rating) ? '#ffc500' : '#dddada'}
             onMouseEnter={() => setHovered(ratingValue)}

@@ -19,23 +19,40 @@ const Container = styled.div`
 const CardTemplate: FunctionComponent = (): JSX.Element => {
   return (
     <Container>
+      <h2>카드 UI</h2>
       <Card
         layout="vertical"
         title="CardTitle"
         label="CardLabel"
-        hilightText="hilight"
-        crossoutText="crossout"
+        hilightText="Hilight"
+        crossoutText="Crossout"
         contents="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
         consequatur vero veniam aperiam nulla soluta nisi nam deserunt cumque
         distinctio. Quisquam animi sapiente laboriosam et debitis ipsam laborum
         ad fugiat."
       />
       <Card
-        layout="horizontal"
+        layout="vertical"
         title="CardTitle"
         label="CardLabel"
-        hilightText="hilight"
-        crossoutText="crossout"
+        hilightText="Hilight"
+        crossoutText="Crossout"
+      />
+      <Card
+        layout="vertical"
+        title="CardTitle"
+        label="CardLabel"
+        hilightText="Hilight"
+        crossoutText="Crossout"
+        useRating={false}
+      />
+      <Card
+        layout="horizontal"
+        title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+        consequatur vero veniam aperiam nulla soluta nisi nam deserunt cumque
+        distinctio. Quisquam animi sapiente laboriosam et debitis ipsam laborum
+        ad fugiat."
+        label="John Doe"
         contents="Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
         consequatur vero veniam aperiam nulla soluta nisi nam deserunt cumque
         distinctio. Quisquam animi sapiente laboriosam et debitis ipsam laborum
