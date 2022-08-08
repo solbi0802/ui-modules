@@ -23,7 +23,7 @@ const FormTemplate: FunctionComponent = (): JSX.Element => {
       <Form
         maxLength={500}
         state={'disabled'}
-        defaultValue={'비활성화상태입니다.'}
+        defaultValue={'비활성화 상태입니다.'}
       />
       <Form
         maxLength={500}
