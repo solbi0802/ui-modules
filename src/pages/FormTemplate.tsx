@@ -19,7 +19,7 @@ const FormTemplate: FunctionComponent = (): JSX.Element => {
   return (
     <Container>
       <h2>입력 폼 UI</h2>
-      <Form maxLength={500} defaultValue={'테스트'} />
+      <Form maxLength={500} defaultValue={'입력폼입니다.'} />
       <Form
         maxLength={500}
         state={'disabled'}

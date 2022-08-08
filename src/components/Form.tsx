@@ -75,6 +75,7 @@ const Form: FunctionComponent<FormPropType> = (
         onKeyUp={e => {
           calcLength(e);
         }}
+        placeholder={!defaultValue ? '내용이 있을 수도 있습니다.' : ''}
         readOnly={state === 'readonly'}
         disabled={state === 'disabled'}
         defaultValue={defaultValue}
