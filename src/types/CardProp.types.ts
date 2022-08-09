@@ -1,5 +1,5 @@
 export type CardPropType = {
-  layout: 'vertical' | 'horizontal';
+  layout: Layout;
   title?: string;
   label?: string;
   hilightText?: string;
@@ -7,3 +7,5 @@ export type CardPropType = {
   contents?: string;
   useRating?: boolean;
 };
+
+export type Layout = 'vertical' | 'horizontal';
