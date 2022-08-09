@@ -2,6 +2,7 @@ import React from 'react';
 import { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
 import Form from 'components/Form';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   display: grid;
@@ -19,6 +20,8 @@ const FormTemplate: FunctionComponent = (): JSX.Element => {
   return (
     <Container>
       <h2>입력 폼 UI</h2>
+      <Link to="/">메인 페이지로 이동</Link>
+      <Link to="/card">카드 UI로 이동</Link>
       <Form maxLength={500} defaultValue={'입력폼입니다.'} />
       <Form
         maxLength={500}
