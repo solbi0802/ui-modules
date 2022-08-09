@@ -3,6 +3,7 @@ import Card from 'components/Card';
 
 import { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   display: grid;
@@ -20,6 +21,8 @@ const CardTemplate: FunctionComponent = (): JSX.Element => {
   return (
     <Container>
       <h2>카드 UI</h2>
+      <Link to="/">메인 페이지로 이동</Link>
+      <Link to="/form">입력 폼 UI로 이동</Link>
       <Card
         layout="vertical"
         title="CardTitle"

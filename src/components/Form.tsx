@@ -51,10 +51,10 @@ const Form: FunctionComponent<FormPropType> = (
   props: FormPropType,
 ): JSX.Element => {
   const { maxLength, state = 'default', defaultValue = '' } = props;
-  const [counter, setCounter] = useState(0);
-  const [contentState, setContentState] = useState(state);
-  const [isDisabledButton, setIsDisabledButton] = useState(true);
-  const [value, setValue] = useState(defaultValue);
+  const [counter, setCounter] = useState<number>(0);
+  const [contentState, setContentState] = useState<State>(state);
+  const [isDisabledButton, setIsDisabledButton] = useState<boolean>(true);
+  const [value, setValue] = useState<string>('');
 
   useEffect(() => {
     if (defaultValue?.length > 0) {
@@ -64,38 +64,38 @@ const Form: FunctionComponent<FormPropType> = (
 
   const calcLength = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     const inputValue = e.target.value;
-
+    setContentState('inputProgress');
+    setCounter(maxLength - inputValue.length);
+    setValue(inputValue);
     // 초기값과 내용이 같지 않을때만 save 버튼 활성화
     if (defaultValue === inputValue) {
       setIsDisabledButton(true);
     } else {
-      setContentState('inputProgress');
-      setCounter(maxLength - inputValue.length);
       setIsDisabledButton(false);
-      setValue(inputValue);
     }
   };
+
+  const onSubmit = (): void => {
+    window.alert(`저장되었습니다. 입력 값 : ${value}`);
+    setValue(''); // 입력 폼 초기화
+  };
+
   return (
     <FormWrapper>
       <TextAreaSection
         maxLength={maxLength}
-        onKeyUp={e => {
-          calcLength(e);
-        }}
+        onChange={calcLength}
+        onKeyDown={calcLength}
         placeholder={!defaultValue ? '내용이 있을 수도 있습니다.' : ''}
         readOnly={state === 'readonly'}
         disabled={state === 'disabled'}
         defaultValue={defaultValue}
+        value={value}
         state={contentState}
       ></TextAreaSection>
       <CounterTextSection state={contentState}>{counter}</CounterTextSection>
       {contentState === 'inputProgress' && (
-        <SaveButton
-          disabled={isDisabledButton}
-          onClick={(): void => {
-            window.alert(`저장되었습니다. 입력 값 : ${value}`);
-          }}
-        >
+        <SaveButton disabled={isDisabledButton} onClick={onSubmit}>
           save
         </SaveButton>
       )}

@@ -1,9 +1,9 @@
 import React, { FunctionComponent, Component } from 'react';
 import styled from '@emotion/styled';
 import Rating from './Rating';
-import { CardPropType } from 'types/CardProp.types';
+import { CardPropType, Layout } from 'types/CardProp.types';
 
-const CardWrapper = styled.div<{ layout: 'vertical' | 'horizontal' }>`
+const CardWrapper = styled.div<{ layout: Layout }>`
   display: flex;
   flex-direction: ${({ layout }) =>
     layout === 'horizontal' ? 'row' : 'column'};
@@ -21,17 +21,14 @@ const CardWrapper = styled.div<{ layout: 'vertical' | 'horizontal' }>`
   }
 `;
 
-const CardImage = styled.img<{ layout: 'vertical' | 'horizontal' }>`
-  position: relative;
+const CardImage = styled.img<{ layout: Layout }>`
   width: ${({ layout }) => (layout === 'horizontal' ? '40%' : '100%')};
+  max-width: 100%;
   height: auto;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  transition: transform 0.5s ease-in-out;
+  object-fit: cover;
 `;
 
-const ContentWrapper = styled.div<{ layout: 'vertical' | 'horizontal' }>`
+const ContentWrapper = styled.div<{ layout: Layout }>`
   background-color: #f8f7f7fa;
   display: flex;
   flex-direction: column;
@@ -43,7 +40,7 @@ const ContentWrapper = styled.div<{ layout: 'vertical' | 'horizontal' }>`
   padding-left: ${({ layout }) => layout === 'horizontal' && '8px'};
 `;
 
-const TextWrapper = styled.div<{ layout: 'vertical' | 'horizontal' }>`
+const TextWrapper = styled.div<{ layout: Layout }>`
   background-color: #f8f7f7fa;
   display: flex;
   flex-direction: column;
@@ -54,7 +51,7 @@ const TextWrapper = styled.div<{ layout: 'vertical' | 'horizontal' }>`
     layout === 'horizontal' ? 'none' : 'solid #d0c9c6 1px;'};
 `;
 
-const CardLabel = styled.p<{ layout: 'vertical' | 'horizontal' }>`
+const CardLabel = styled.p<{ layout: Layout }>`
   color: #929292;
   font-size: 14px;
   margin-left: 8px;
@@ -62,7 +59,7 @@ const CardLabel = styled.p<{ layout: 'vertical' | 'horizontal' }>`
   font-weight: 500;
 `;
 
-const CardTitle = styled.p<{ layout: 'vertical' | 'horizontal' }>`
+const CardTitle = styled.p<{ layout: Layout }>`
   display: -webkit-box;
   padding: 8px 0 0 8px;
   font-size: 16px;
@@ -94,7 +91,7 @@ const CrossOutText = styled.p`
   margin-left: 8px;
 `;
 
-const Contents = styled.span<{ layout: 'vertical' | 'horizontal' }>`
+const Contents = styled.span<{ layout: Layout }>`
   display: -webkit-box;
   line-height: 1.5;
   width: ${({ layout }) => layout === 'vertical' && '50%'};
@@ -126,7 +123,11 @@ const Card: FunctionComponent<CardPropType> = (
   } = props;
   return (
     <CardWrapper layout={layout}>
-      <CardImage src="/image.png" alt="카드 이미지" layout={layout}></CardImage>
+      <CardImage
+        src={'/images/image.png'}
+        alt="카드 이미지"
+        layout={layout}
+      ></CardImage>
       <ContentWrapper layout={layout}>
         {layout === 'vertical' ? (
           <>
